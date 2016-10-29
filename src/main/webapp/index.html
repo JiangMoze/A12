@@ -1,0 +1,46 @@
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery-1.11.0.js">
+
+
+
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+//            AJAX:Asynchronized javascript and xml
+
+            $("#btn").click(function(){
+
+              // $("#msg").html($("#test").serialize());
+                var a=$("#test").serializeArray();
+
+                for(var index  in a){
+                    alert(a[index].name+"---"+a[index].value);
+
+                }
+
+
+            });
+
+
+        });
+
+
+    </script>
+
+
+</head>
+<body>
+
+    <form id="test">
+       用户名： <input type="text" name="username" id="username"/>
+       密码： <input type="text" name="pwd" id="pwd"/>
+
+
+    </form>
+    <button id="btn" >点击</button>
+    <span id="msg"></span>
+
+</body>
+</html>
