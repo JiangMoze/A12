@@ -32,7 +32,6 @@
                    data:"pro="+s,
                    url:"city",
                    success:function(text){
-
                        $("#city option").remove();
 
                        $(text).each(function(i){
