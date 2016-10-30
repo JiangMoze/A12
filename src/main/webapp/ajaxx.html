@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.11.0.js">
+
+
+
+    </script>
+
+    <script type="text/javascript" >
+
+        $(function(){
+
+            $("a").mouseover(function(){
+                var bookid=$(this).attr("bookid");
+
+                $.ajax({
+                    data:"bookid="+bookid,//前端往后端传输的数据
+                    dataType:"xml",//后端往前端传输的数据类型
+                    type:"post",//提交的类型
+                    url:"book",//前端向后端发出的请求
+                    success:function(txt){
+                       $(txt).find("book").each(function(){
+
+                           $("#name").html($(this).children("name").text()) ;
+
+                           $("#pic").attr("src",$(this).children("pic").text());
+
+                           $("#price").html($(this).children("price").text()) ;
+                       });
+                    }
+
+
+                });
+                //先找到DIV
+                var book=$("#book");
+                book.css("visibility","visible");
+
+            });
+
+
+            $("a").mouseout(function(){
+                var book=$("#book");
+                book.css("visibility","hidden");
+
+            });
+
+
+        });
+
+
+
+    </script>
+    <title>Title</title>
+</head>
+<body>
+    <a href="" bookid="java">java基础</a>
+    <a href="" bookid="jsp">jsp基础</a>
+    <div id="book" style="visibility: hidden">
+        <div>
+            <span id="name">NAME</span>
+
+        </div>
+
+        <div>
+            <span id="price"></span>
+
+        </div>
+        <div>
+            <img src="" id="pic">
+
+        </div>
+
+    </div>
+</body>
+</html>
